@@ -58,6 +58,9 @@ class ProviderWrapper
      */
     protected function checkMethodForLoginRequired($method)
     {
+        // disabled to be able to manually set auth cookies
+        return;
+
         $isLoggedIn = $this->provider->isLoggedIn();
         $methodRequiresLogin = $this->provider->checkMethodRequiresLogin($method);
 

@@ -122,7 +122,7 @@ class Request
     {
         return !empty($this->csrfToken) && $this->csrfToken !== self::DEFAULT_TOKEN;
     }
-    
+
     /**
      * Clear token information.
      *
@@ -157,9 +157,12 @@ class Request
      * @param string $username
      * @return $this
      */
-    public function loadCookiesFor($username)
+    public function loadCookiesFor($username, $dropCurrentCookies = false)
     {
-        $this->dropCookies();
+        if ($dropCurrentCookies) {
+            $this->dropCookies();
+        }
+
         $this->httpClient->loadCookies($username);
 
         return $this;
